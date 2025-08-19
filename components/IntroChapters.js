@@ -12,8 +12,8 @@ import { getIntroductionChaptersDeep } from '../api/apiService';
 import { useNavigation } from '@react-navigation/native';
 import { useTranslation } from 'react-i18next';
 import AppText from './AppText';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
-const screenWidth = Dimensions.get('window').width;
 
 function cleanDescription(html) {
   if (!html) return '';
@@ -72,6 +72,7 @@ export default function IntroChapters({ route }) {
   const storyboards = chapter.attributes.storyboards?.data || [];
 
   return (
+    <SafeAreaView style={styles.safeArea}>
     <ScrollView style={styles.container} contentContainerStyle={{ padding: 16 }}>
       
       {chapter.attributes.description && (
@@ -104,19 +105,25 @@ export default function IntroChapters({ route }) {
         </View>
       )}
     </ScrollView>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
+  safeArea: {
+    flex: 1,
+    backgroundColor: '#EAF6FF',
+  },
   container: {
     flex: 1,
-    top: 90,
-    backgroundColor: '#EAF6FF',
+    top:40
+  },
+  contentContainer: {
+    padding: 16,
+    paddingBottom: 40,
   },
   center: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
   },
   descriptionText: {
     fontSize: 16,

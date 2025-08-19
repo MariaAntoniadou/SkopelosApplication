@@ -74,7 +74,7 @@ export default function TrailDetails() {
         if (gpxUrl) {
           try {
             const gpxRes = await fetch(gpxUrl);
-            const gpxAppText = await gpxRes.AppText();
+            const gpxAppText = await gpxRes.text();
             const path = parseGpxPoints(gpxAppText);
             setGpxPath(path);
             
