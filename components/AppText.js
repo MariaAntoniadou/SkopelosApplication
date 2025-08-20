@@ -1,6 +1,6 @@
 import React from 'react';
 import { Text } from 'react-native';
-import { DEVICE_CONFIG, RESPONSIVE_THEME } from '../config/responsive';
+import { DEVICE_CONFIG } from '../config/responsive';
 
 export default function AppText(props) {
   const { style, fontSize, children, ...restProps } = props;

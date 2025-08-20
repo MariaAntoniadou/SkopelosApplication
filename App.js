@@ -6,7 +6,7 @@ import { WeatherProvider } from './context/WeatherContext.js';
 import { AuthProvider } from './context/AuthContext.js';
 import { useFonts } from 'expo-font';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
-import { Platform, StatusBar } from 'react-native';
+import { Platform, StatusBar, View } from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
 export default function App() {
@@ -19,12 +19,10 @@ export default function App() {
 
   useEffect(() => {
     if (Platform.OS === 'android') {
-      // Configure Android status bar for better integration
-      StatusBar.setBackgroundColor('rgba(81, 157, 233, 0.9)', true);
+      StatusBar.setBackgroundColor('transparent', true);
       StatusBar.setBarStyle('light-content', true);
-      StatusBar.setTranslucent(false); 
+      StatusBar.setTranslucent(true);
     }
-    // Αφαίρεσα το camera permission από εδώ
   }, []);
 
   if (!fontsLoaded) {
@@ -33,13 +31,14 @@ export default function App() {
 
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
-    <SafeAreaProvider>
-      <AuthProvider>
-        <WeatherProvider>
-          <Navigation/>
-        </WeatherProvider>
-      </AuthProvider>
-    </SafeAreaProvider>
+      <SafeAreaProvider>
+        <StatusBar barStyle="light-content" backgroundColor="transparent" translucent={true} />
+        <AuthProvider>
+          <WeatherProvider>
+            <Navigation/>
+          </WeatherProvider>
+        </AuthProvider>
+      </SafeAreaProvider>
     </GestureHandlerRootView>
   );
 }

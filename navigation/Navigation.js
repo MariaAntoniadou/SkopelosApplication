@@ -163,16 +163,7 @@ export default function Navigation() {
           headerTintColor: 'rgba(4, 57, 111, 1)',
           headerTitleAlign: 'center',
           headerTitleStyle: getHeaderTitleStyle(config.headerTitleSize),
-          headerBackground: () => (
-            <BlurView
-              intensity={config.blurIntensity}
-              tint={config.blurTint}
-              style={{ flex: 1 }}
-            />
-          ),
-          ...(config.screenInfo.isAndroid && {
-            headerStatusBarHeight: 0,
-          })
+          
         }}
       >
         <Stack.Screen
