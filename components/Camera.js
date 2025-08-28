@@ -14,7 +14,6 @@ export default function CameraComponent({ onPhotoTaken, onClose }) {
 
   const checkPermissions = async () => {
     try {
-      // Ελέγχουμε τα permissions χωρίς να τα ζητήσουμε
       const { status } = await Camera.getCameraPermissionsAsync();
       setHasPermission(status === 'granted');
       setPermissionChecked(true);

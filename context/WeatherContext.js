@@ -1,5 +1,6 @@
 import { createContext, useContext, useEffect, useState } from 'react';
 import { useTranslation } from "react-i18next";
+import { WEATHER_API_KEY } from "@env";
 
 const WeatherContext = createContext();
 
@@ -11,9 +12,9 @@ export const WeatherProvider = ({ children }) => {
   useEffect(() => {
     async function fetchWeather() {
       try {
-        const apiKey = "7927d486f1d246f1a2e81847252507";
+        
         const response = await fetch(
-          `https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=Skopelos&lang=${locale}`
+          `https://api.weatherapi.com/v1/current.json?key=${WEATHER_API_KEY}&q=Skopelos&lang=${locale}`
         );
         const data = await response.json();
         setWeather(data);

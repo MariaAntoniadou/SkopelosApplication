@@ -9,6 +9,7 @@ import { XMLParser } from 'fast-xml-parser';
 import { useNavigation } from '@react-navigation/native';
 import { useTranslation } from 'react-i18next';
 import AppText from './AppText.js';
+import RenderHtml from 'react-native-render-html';
 
 const screenWidth = Dimensions.get('window').width;
 
@@ -190,20 +191,20 @@ export default function TrailDetails() {
             <AppText style={{ fontWeight: 'bold', fontSize: 16, marginBottom: 4 }}>
               {selectedPoint.title}
             </AppText>
-            <AppText style={styles.description}>
-              {selectedPoint.description.replace(/<\/?p>/g, '').replace(/<\/p><p>/g, ' ')}
-            </AppText>
+            <RenderHtml
+              contentWidth={screenWidth - 36}
+              source={{ html: selectedPoint.description }}
+              tagsStyles={{ p: { fontSize: 16, color: '#232323', lineHeight: 22 } }}
+            />
           </View>
         )}
 
-      <AppText style={styles.description}>
-        {attr.description?.replace(/<\/?p>/g, '').replace(/<\/p><p>/g, ' ') || ''}
-      </AppText>
-    </ScrollView>
-  );
-}
-
-// ...existing code...
+              <AppText style={styles.description}>
+                {attr.description?.replace(/<\/?p>/g, '').replace(/<\/p><p>/g, ' ') || ''}
+              </AppText>
+            </ScrollView>
+          );
+        }
 
 const styles = StyleSheet.create({
   container: {

@@ -63,10 +63,10 @@ export default function Navigation() {
       
       // Icon sizes
       iconSize: isVerySmall ? 20 : 
-               isSmall ? 22 : 
-               isMedium ? 24 : 
-               isLarge ? 26 : 
-               isExtraLarge ? 32 : 28,
+                isSmall ? 22 : 
+                isMedium ? 24 : 
+                isLarge ? 26 : 
+                isExtraLarge ? 32 : 28,
       
       // Container dimensions με Android padding compensation
       containerSize: (isVerySmall ? 24 : 

@@ -77,16 +77,14 @@ const handleRegister = async () => {
   try {
     await createUserWithEmailAndPassword(auth, email, password);
     
-    // Μετά την επιτυχή εγγραφή, ρώτησε αν θέλει camera permission
     setLoading(false);
     
-    // Δείξε πρώτα επιτυχία εγγραφής, μετά ρώτησε για κάμερα
     Alert.alert(
       t('registrationSuccess'), 
       t('accountCreated'),
       [{ 
         text: 'OK', 
-        onPress: () => requestCameraPermission() // Μετά ρώτησε για κάμερα
+        onPress: () => requestCameraPermission() 
       }]
     );
     

@@ -15,7 +15,7 @@ export default function AppText(props) {
       : fontSize
     : undefined;
     
-  // Χρήση του υπάρχοντος responsive system
+  
   const responsiveStyle = style && style.fontSize 
     ? { 
         ...style, 

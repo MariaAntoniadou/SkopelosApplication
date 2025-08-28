@@ -18,9 +18,24 @@ import { doc, setDoc, deleteDoc, getDoc } from "firebase/firestore";
 import { MaterialIcons } from "@expo/vector-icons";
 import { useAuth } from "../context/AuthContext";
 import AppText from './AppText';
+import RenderHtml from 'react-native-render-html';
+import { Linking } from 'react-native';
 
 const UPLOADS_BASE_URL = 'https://skopelos-admin.inculture.app';
 const screenWidth = Dimensions.get('window').width;
+
+function autoLinkHtml(html) {
+  // Μετατρέπει σκέτα URLs και www. σε <a href="...">...</a>
+  return html
+    .replace(
+      /(https?:\/\/[^\s<]+)/g,
+      '<a href="$1">$1</a>'
+    )
+    .replace(
+      /www\.([a-zA-Z0-9\-\.]+\.[a-zA-Z]{2,})(?![^<]*>)/g,
+      '<a href="https://www.$1">www.$1</a>'
+    );
+}
 
 export default function StoryboardPoint() {
   const [point, setPoint] = useState(null);
@@ -155,14 +170,25 @@ export default function StoryboardPoint() {
           />
         )}
         <View style={styles.divider} />
-        <AppText style={styles.description}>
-          {attr.description
-            .replace(/<\/p><p>/g, ' ')
-            .replace(/<\/?p>/g, '')
-            .replace(/<[^>]+>/g, '')
-            .replace(/&nbsp;/g, ' ')
-          }       
-        </AppText>
+        {attr.description ? (
+          <RenderHtml
+            contentWidth={screenWidth * 0.9}
+            source={{ html: autoLinkHtml(attr.description) }}
+            tagsStyles={{
+              p: { fontSize: 16, color: '#232323', lineHeight: 24, fontFamily: 'Inter-Variable' ,textAlign:'center'},
+              a: { color: '#1565c0', textDecorationLine: 'underline', fontWeight: 'bold' },
+            }}
+            defaultProps={{
+              a: {
+                onPress: (_, href) => Linking.openURL(href),
+              },
+            }}
+          />
+        ) : (
+          <AppText style={styles.description}>
+            {t('noDescription', 'Δεν υπάρχει περιγραφή')}
+          </AppText>
+        )}
         <MapView style={styles.map} initialRegion={initialRegion}>
           {trailPath.length > 0 ? (
             <>

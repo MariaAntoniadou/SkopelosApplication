@@ -13,7 +13,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useAuth } from '../context/AuthContext';
 import { db } from '../firebase';
 import { collection, addDoc } from 'firebase/firestore';
-import { DEVICE_CONFIG, RESPONSIVE_THEME } from '../config/responsive'; // 👈 ΠΡΟΣΘΗΚΗ RESPONSIVE
+import { DEVICE_CONFIG, RESPONSIVE_THEME } from '../config/responsive'; 
 
 const iconMap = {
   'Προορισμοί': 'map-marked-alt',

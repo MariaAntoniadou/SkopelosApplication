@@ -19,26 +19,29 @@
     "expo-blur": "^14.1.5",
     "expo-camera": "^16.1.11",
     "expo-font": "~13.3.2",
+    "expo-status-bar": "~2.2.3",
     "fast-xml-parser": "^5.2.5",
     "firebase": "^12.0.0",
     "i18next": "^25.3.2",
     "react": "19.0.0",
     "react-i18next": "^15.6.1",
     "react-native": "0.79.5",
+    "react-native-dotenv": "^3.4.11",
     "react-native-gesture-handler": "~2.24.0",
     "react-native-keyboard-aware-scroll-view": "^0.9.5",
     "react-native-maps": "1.20.1",
     "react-native-reanimated": "~3.17.4",
     "react-native-reanimated-carousel": "^4.0.2",
+    "react-native-render-html": "^6.3.4",
     "react-native-responsive-screen": "^1.4.2",
     "react-native-safe-area-context": "^5.5.2",
     "react-native-screens": "~4.11.1",
     "react-native-system-navigation-bar": "^2.6.4",
-    "react-native-vector-icons": "^10.3.0",
-    "expo-status-bar": "~2.2.3"
+    "react-native-vector-icons": "^10.3.0"
   },
   "devDependencies": {
     "@types/react": "~19.0.10",
+    "babel-preset-expo": "^13.2.3",
     "typescript": "~5.8.3"
   },
   "private": true
