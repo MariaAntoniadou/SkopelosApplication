@@ -1,6 +1,6 @@
 import { createContext, useContext, useEffect, useState } from 'react';
 import { useTranslation } from "react-i18next";
-import { WEATHER_API_KEY } from "@env";
+import { WEATHER_API_KEY } from '../config';
 
 const WeatherContext = createContext();
 
@@ -8,6 +8,7 @@ export const WeatherProvider = ({ children }) => {
   const [weather, setWeather] = useState(null);
   const { i18n } = useTranslation();
   const locale = i18n.language || 'el';
+
 
   useEffect(() => {
     async function fetchWeather() {
